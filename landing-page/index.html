@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Halal Money Masterclass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F2F3EE; --panel:#FFFFFF; --panel-2:#E9EBE4; --ink:#101F19; --ink-2:#3E4B45; --muted:#66716B;
+  --line:#D5DAD2; --line-2:#C2C9BF; --accent:#167A4B; --accent-strong:#0E5C38; --accent-soft:#DDEFE4;
+  --gold:#C9961F; --gold-soft:#F6EBCB; --danger:#B5432F; --shadow:0 24px 60px -30px rgba(16,31,25,.35);
+  --display:"Bricolage Grotesque","Archivo",Impact,"Arial Black",sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1512; --panel:#142019; --panel-2:#1B2A22; --ink:#EEF2ED; --ink-2:#C6D0C9; --muted:#93A198;
+    --line:#26362D; --line-2:#354A3F; --accent:#3DBB7C; --accent-strong:#5DD497; --accent-soft:#173A29;
+    --gold:#E4B54A; --gold-soft:#3A2E12; --danger:#E4715C; --shadow:0 24px 60px -30px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1512; --panel:#142019; --panel-2:#1B2A22; --ink:#EEF2ED; --ink-2:#C6D0C9; --muted:#93A198;
+  --line:#26362D; --line-2:#354A3F; --accent:#3DBB7C; --accent-strong:#5DD497; --accent-soft:#173A29;
+  --gold:#E4B54A; --gold-soft:#3A2E12; --danger:#E4715C; --shadow:0 24px 60px -30px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;border:0;border-radius:6px;padding:16px 26px;font:600 17px/1 var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,background .15s}
+.btn:hover{background:var(--accent-strong);transform:translateY(-1px)}
+.btn:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn .arrow{font-family:var(--mono);font-size:18px}
+:root[data-theme="dark"] .btn{color:#0D1512}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{color:#0D1512}}
+
+/* top strip */
+.strip{background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:42px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.strip a{color:var(--gold);text-decoration:none;font-weight:500}
+.strip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:10px;vertical-align:1px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* nav */
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:22px;padding-bottom:22px}
+.brand{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em;text-decoration:none}
+.brand span{color:var(--accent)}
+nav .sub{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* hero */
+.hero{padding:16px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:start}
+.hero h1{font-size:clamp(44px,6.8vw,88px);line-height:.96;font-weight:800;font-variation-settings:"opsz" 96}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:.12em;background:var(--gold);opacity:.55;border-radius:2px;z-index:-1}
+.lede{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);max-width:34em;margin-top:22px}
+.lede strong{color:var(--ink);font-weight:600}
+.lede .big{font-family:var(--display);font-weight:700;color:var(--accent);font-size:1.15em}
+.hero .cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
+.hero .when{font-family:var(--mono);font-size:13px;color:var(--muted);line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{font-family:var(--mono);font-size:12.5px;padding:7px 12px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink-2);background:var(--panel)}
+.chip b{color:var(--accent);font-weight:500}
+
+/* email card */
+.mail{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;animation:arrive .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes arrive{from{transform:translateY(14px)}to{transform:translateY(0)}}
+.mail .bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel-2);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.mail .bar i{width:10px;height:10px;border-radius:50%;background:var(--line-2);display:inline-block}
+.mail .bar i:first-child{background:var(--danger)}
+.mail .bar i:nth-child(2){background:var(--gold)}
+.mail .bar i:nth-child(3){background:var(--accent)}
+.mail .bar span{margin-left:auto}
+.mail .hdr{padding:18px 20px 14px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-family:var(--mono);font-size:13px}
+.mail .hdr dt{color:var(--muted)}
+.mail .hdr dd{margin:0;color:var(--ink)}
+.mail .hdr .unread{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:8px}
+.mail .subject{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-.01em}
+.mail .body{padding:18px 20px 20px;font-size:15.5px;color:var(--ink-2)}
+.mail .body p+p{margin-top:12px}
+.mail .sig{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:14px}
+.invite{margin-top:18px;border:1px solid var(--line-2);border-radius:8px;overflow:hidden}
+.invite .top{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--accent-soft);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-strong)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:14px 8px 10px}
+.count div{text-align:center}
+.count b{display:block;font-family:var(--display);font-weight:800;font-size:38px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.count small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.invite .foot{padding:10px 14px 14px;font-family:var(--mono);font-size:12.5px;color:var(--ink-2);border-top:1px dashed var(--line-2)}
+.invite .foot b{font-weight:500;color:var(--ink)}
+.mail .act{display:flex;gap:10px;padding:0 20px 20px}
+.mail .act .btn{flex:1;padding:14px 18px;font-size:15.5px}
+.mail .act .ghost{flex:0 0 auto;background:transparent;color:var(--ink-2);border:1px solid var(--line-2)}
+.mail .act .ghost:hover{background:var(--panel-2);transform:none}
+
+/* proof band */
+.proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.proof .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.proof div{padding:26px 0;display:flex;flex-direction:column;gap:6px}
+.proof div+div{border-left:1px solid var(--line);padding-left:32px}
+.proof b{font-family:var(--display);font-weight:800;font-size:clamp(34px,4vw,48px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.proof span{color:var(--muted);font-size:15px}
+
+/* sections */
+section.block{padding:clamp(56px,8vw,96px) 0}
+.head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 64px;align-items:end;margin-bottom:40px}
+.head h2{font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.05}
+.head p{color:var(--ink-2);max-width:36em;font-size:18px}
+
+/* thread */
+.thread{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch}
+.msg{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:12px}
+.msg .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.msg .stat{font-family:var(--display);font-weight:800;font-size:clamp(44px,5.5vw,72px);line-height:.95;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.msg.after .stat{color:var(--accent)}
+.msg .cap{color:var(--ink-2);font-size:16px}
+.msg .tag{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:4px;background:var(--panel-2);color:var(--ink-2);align-self:flex-start}
+.msg.after .tag{background:var(--gold-soft);color:var(--gold)}
+.thread .arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;padding:0 6px}
+.thread .arrow svg{width:64px;height:40px;stroke:var(--accent);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* agenda */
+.agenda{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px 26px 28px;display:flex;flex-direction:column;gap:12px}
+.card .t{font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:space-between}
+.card h3{font-size:22px;font-weight:700;line-height:1.15}
+.card p{color:var(--ink-2);font-size:16px}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fit .card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.fit li{display:flex;gap:12px;align-items:flex-start;color:var(--ink-2);font-size:16px}
+.fit li::before{content:"";flex:0 0 18px;height:18px;margin-top:4px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent)}
+.fit .no li::before{background:var(--panel-2);border-color:var(--line-2)}
+.fit .no h3{color:var(--muted)}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 64px}
+.faq h2{font-size:clamp(30px,4vw,44px);font-weight:700;line-height:1.05}
+details{border-top:1px solid var(--line);padding:18px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;font-family:var(--display);font-weight:700;font-size:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--accent);font-size:22px;font-weight:400}
+details[open] summary::after{content:"−"}
+details p{margin-top:12px;color:var(--ink-2);max-width:38em}
+
+/* register */
+#register{background:var(--ink);color:var(--bg)}
+#register .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:32px 72px;align-items:center;padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(56px,8vw,96px)}
+#register .eyebrow{color:var(--gold)}
+#register h2{font-size:clamp(34px,4.6vw,60px);font-weight:800;line-height:1;color:#F2F3EE;margin-top:12px}
+#register p.sub{color:#B9C3BC;font-size:18px;margin-top:18px;max-width:30em}
+#register p.sub strong{color:#F2F3EE}
+.formcard{background:var(--panel);color:var(--ink);border-radius:14px;padding:30px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.formcard .eyebrow{color:var(--muted)}
+.formcard .cnt{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:6px}
+.formcard .cnt b{color:var(--ink);font-weight:500}
+form{display:grid;gap:14px;margin-top:22px}
+label{display:grid;gap:6px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+input{font:400 16px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line-2);border-radius:6px;padding:14px 14px}
+input::placeholder{color:var(--muted)}
+input:invalid:not(:placeholder-shown){border-color:var(--danger)}
+form .btn{margin-top:6px;padding:18px}
+.fine{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.5;margin-top:4px}
+.done{display:none;padding:10px 0 0}
+.done h3{font-size:26px;font-weight:700}
+.done p{color:var(--ink-2);margin-top:10px}
+.done .steps{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px;font-family:var(--mono);font-size:13.5px}
+.done .steps li{display:flex;gap:12px}
+.done .steps li b{color:var(--accent);font-weight:500;min-width:2em}
+.formcard.sent form{display:none}.formcard.sent .done{display:block}
+
+footer{padding:36px 0 48px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px 40px;font-size:13px;color:var(--muted);line-height:1.6}
+footer .brand{color:var(--ink)}
+
+/* sticky mobile cta */
+.sticky{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:var(--panel);border-top:1px solid var(--line);display:none;gap:12px;align-items:center;z-index:10}
+.sticky .btn{flex:1;padding:14px}
+.sticky .when{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.35}
+
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .head,.faq,#register .wrap{grid-template-columns:1fr}
+  .agenda{grid-template-columns:1fr}
+  .thread{grid-template-columns:1fr}
+  .thread .arrow svg{transform:rotate(90deg)}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .proof .wrap{grid-template-columns:1fr}
+  .proof div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .proof div{padding:18px 0}
+  .fit{grid-template-columns:1fr}
+  .count b{font-size:30px}
+  .sticky{display:flex}
+  body{padding-bottom:84px}
+  footer .wrap{grid-template-columns:1fr}
+  nav .sub{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .mail{animation:none}.strip .dot{animation:none}.btn{transition:none}html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="strip"><div class="wrap">
+  <div><span class="dot" aria-hidden="true"></span>Free masterclass · <span data-date-short>this Saturday</span> · 2PM EST / 7PM UK</div>
+  <a href="#register">Save your seat →</a>
+</div></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top">Abu Lahya<span>.</span></a>
+  <div class="sub">Halal Money Masterclass · 90 min · on Zoom</div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div>
+    <div class="eyebrow">Free training · no cost · no replay guaranteed</div>
+    <h1 style="margin-top:18px">How to make money so fast <em>it feels haram.</em></h1>
+    <p class="lede"><strong>100% halal.</strong> No face, no audience, no products. Just email. The remote skill that took me from a €11/hour waiter to <span class="big">$10K/month</span>, and 2,000+ brothers are now doing the same.</p>
+    <div class="cta">
+      <a class="btn" href="#register">Yes, save my free seat <span class="arrow">→</span></a>
+      <div class="when"><span data-date-long>Saturday</span><br>2PM EST / 7PM UK · 90 min training</div>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>★</b> 100% free</span>
+      <span class="chip"><b>⌂</b> Live on Zoom</span>
+      <span class="chip"><b>◷</b> 90 minutes</span>
+      <span class="chip"><b>1,847</b> brothers already registered</span>
+    </div>
+  </div>
+
+  <aside class="mail" aria-label="Preview of the training invite">
+    <div class="bar"><i></i><i></i><i></i><span>Inbox · 1 unread</span></div>
+    <dl class="hdr">
+      <dt>From</dt><dd><span class="unread" aria-hidden="true"></span>Abu Lahya</dd>
+      <dt>To</dt><dd>You</dd>
+      <dt>Subject</dt><dd class="subject">Your seat for Saturday's masterclass</dd>
+    </dl>
+    <div class="body">
+      <p>Asalamu alaykum brother,</p>
+      <p>I was pouring coffee for €11 an hour three years ago. Everything changed when I learned one remote skill that needs no face, no audience and no product. Just email.</p>
+      <p>On Saturday I'm walking through exactly how it works, live, for 90 minutes. Bring a notebook.</p>
+      <div class="invite">
+        <div class="top"><span>Starts in</span><span data-date-short>Saturday</span></div>
+        <div class="count" id="count" aria-live="off">
+          <div><b data-d>00</b><small>days</small></div>
+          <div><b data-h>00</b><small>hrs</small></div>
+          <div><b data-m>00</b><small>min</small></div>
+          <div><b data-s>00</b><small>sec</small></div>
+        </div>
+        <div class="foot">Zoom · <b>2:00 PM EST</b> / <b>7:00 PM UK</b> · 90 min · replay not guaranteed</div>
+      </div>
+      <p class="sig">— Abu Lahya</p>
+    </div>
+    <div class="act">
+      <a class="btn" href="#register">Reserve my seat</a>
+      <a class="btn ghost" href="#agenda">What's covered</a>
+    </div>
+  </aside>
+</div></header>
+
+<div class="proof"><div class="wrap">
+  <div><b>2,000+</b><span>brothers helped</span></div>
+  <div><b>92%</b><span>success rate</span></div>
+  <div><b>$10K+</b><span>per month, top students</span></div>
+</div></div>
+
+<section class="block"><div class="wrap">
+  <div class="head">
+    <h2>Same brother. Three months apart.</h2>
+    <p>This isn't a story about talent or luck. It's what happens when you learn a skill businesses already pay for, then sell it to them without ever showing your face.</p>
+  </div>
+  <div class="thread">
+    <div class="msg before">
+      <div class="meta"><span>Before</span><span>Restaurant floor, Europe</span></div>
+      <div class="stat">€11<span style="font-size:.4em;font-weight:500;color:var(--muted)">/hr</span></div>
+      <p class="cap">Waiter. Double shifts. Missing prayers to make rent, and still stuck.</p>
+      <span class="tag">Stuck</span>
+    </div>
+    <div class="arrow" aria-hidden="true">
+      <svg viewBox="0 0 64 40"><path d="M4 20 H56 M44 8 L56 20 L44 32"/></svg>
+      <span>3 months</span>
+    </div>
+    <div class="msg after">
+      <div class="meta"><span>3 months later</span><span>Working from anywhere</span></div>
+      <div class="stat">$10K<span style="font-size:.4em;font-weight:500;color:var(--muted)">/mo</span></div>
+      <p class="cap">Writing emails for businesses. Free to pray on time, and fully halal.</p>
+      <span class="tag">Free &amp; halal</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="agenda" style="padding-top:0"><div class="wrap">
+  <div class="head">
+    <h2>What you'll walk away with in 90 minutes</h2>
+    <p>No fluff, no "mindset" hour. Three things, explained plainly enough that you could start the same week.</p>
+  </div>
+  <div class="agenda">
+    <div class="card"><div class="t"><span>Part 1</span><span>~30 min</span></div><h3>The email skill, explained plainly</h3><p>What businesses actually pay for, why email is the one channel they can't switch off, and why you don't need a following, a face on camera, or a product of your own.</p></div>
+    <div class="card"><div class="t"><span>Part 2</span><span>~30 min</span></div><h3>How brothers land their first paying client</h3><p>The exact outreach approach, who to send it to, and what to say when they reply. Real examples from students, not theory.</p></div>
+    <div class="card"><div class="t"><span>Part 3</span><span>~30 min</span></div><h3>Keeping it 100% halal</h3><p>Which niches to avoid, how to structure payment so there's no riba, and how to work remotely without compromising your deen. Then live Q&amp;A.</p></div>
+  </div>
+</div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap">
+  <div class="fit">
+    <div class="card">
+      <h3>This is for you if…</h3>
+      <ul>
+        <li>You feel stuck and don't know where to start online.</li>
+        <li>You can't practice your deen properly at your current job.</li>
+        <li>You've tried dropshipping, crypto or courses and nothing stuck.</li>
+        <li>You want to provide for your family on your own terms.</li>
+      </ul>
+    </div>
+    <div class="card no">
+      <h3>It's not for you if…</h3>
+      <ul>
+        <li>You're looking for a "passive" scheme with no work involved.</li>
+        <li>You want to trade, gamble or touch anything with riba in it.</li>
+        <li>You can't commit 90 focused minutes, live.</li>
+        <li>You're already making $5K+/month online and happy with it.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" style="padding-top:0"><div class="wrap">
+  <div class="faq">
+    <h2>Questions brothers ask before they register</h2>
+    <div>
+      <details open><summary>Is this actually halal?</summary><p>Yes. You're paid a fee for a service (writing emails for a business). No interest, no gambling, no speculation. Part 3 of the training covers which clients and niches to stay away from.</p></details>
+      <details><summary>Do I need to show my face or build an audience?</summary><p>No. This is a behind-the-scenes skill. Your clients care about results in their inbox, not your follower count.</p></details>
+      <details><summary>Is it really free?</summary><p>The masterclass costs nothing. There's no card required to register.</p></details>
+      <details><summary>Will there be a replay?</summary><p>Not guaranteed. Register, put it in your calendar, and show up live. The Q&amp;A at the end is the most valuable part and it isn't recorded.</p></details>
+      <details><summary>What if I have a full-time job right now?</summary><p>Most students started exactly there. The training is at 2PM EST / 7PM UK on a Saturday so you don't have to choose between it and work.</p></details>
+    </div>
+  </div>
+</div></section>
+
+<section id="register"><div class="wrap">
+  <div>
+    <div class="eyebrow">Register your spot now</div>
+    <h2>Lock in your free seat.</h2>
+    <p class="sub">Just enter your name, email &amp; number. <strong>The replay is NOT guaranteed</strong>, so make sure you show up.</p>
+  </div>
+  <div class="formcard" id="formcard">
+    <div class="eyebrow">Free masterclass · <span data-date-short>Saturday</span> · 2PM EST / 7PM UK</div>
+    <div class="cnt"><b>1,847</b> brothers already registered</div>
+    <form id="reg" novalidate>
+      <label>Your name <input name="name" type="text" placeholder="Abdullah" autocomplete="name" required></label>
+      <label>Email <input name="email" type="email" placeholder="you@email.com" autocomplete="email" required></label>
+      <label>Phone (for the reminder) <input name="phone" type="tel" placeholder="+44 7…" autocomplete="tel" required></label>
+      <button class="btn" type="submit">Yes, save my free seat <span class="arrow">→</span></button>
+      <p class="fine">No spam. Only the Zoom link and one reminder before we go live.</p>
+    </form>
+    <div class="done" role="status">
+      <h3>Seat saved. Check your inbox.</h3>
+      <p>The Zoom link is on its way to <b id="doneEmail"></b>. Three things to do now:</p>
+      <ul class="steps">
+        <li><b>1</b><span>Add <span data-date-long>Saturday</span>, 2PM EST / 7PM UK to your calendar.</span></li>
+        <li><b>2</b><span>Whitelist the sender so the link doesn't land in spam.</span></li>
+        <li><b>3</b><span>Turn up 5 minutes early with a notebook.</span></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><a class="brand" href="#top">Abu Lahya<span>.</span></a><br>Halal Money Masterclass · Live on Zoom · 90 minutes</div>
+  <div>Results shown are from the presenter and past students and are not typical or guaranteed. Your outcome depends on your effort and circumstances. This training is educational and not financial advice. Not affiliated with Facebook or Instagram.</div>
+</div></footer>
+
+<div class="sticky">
+  <div class="when"><span data-date-short>Saturday</span><br>2PM EST / 7PM UK</div>
+  <a class="btn" href="#register">Save my free seat →</a>
+</div>
+
+<script>
+(function(){
+  // Next Saturday, 2:00 PM America/New_York (18:00 UTC during EDT). Change SLOT to move the event.
+  var SLOT={weekday:6,utcHour:18};
+  function nextEvent(){
+    var now=new Date(), d=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),SLOT.utcHour,0,0));
+    var diff=(SLOT.weekday-d.getUTCDay()+7)%7; d.setUTCDate(d.getUTCDate()+diff);
+    if(d<=now) d.setUTCDate(d.getUTCDate()+7);
+    return d;
+  }
+  var target=nextEvent();
+  var longFmt=new Intl.DateTimeFormat(undefined,{weekday:'long',month:'long',day:'numeric'});
+  var shortFmt=new Intl.DateTimeFormat(undefined,{weekday:'short',day:'numeric',month:'short'});
+  document.querySelectorAll('[data-date-long]').forEach(function(e){e.textContent=longFmt.format(target)});
+  document.querySelectorAll('[data-date-short]').forEach(function(e){e.textContent=shortFmt.format(target)});
+  var c=document.getElementById('count'), D=c.querySelector('[data-d]'),H=c.querySelector('[data-h]'),M=c.querySelector('[data-m]'),S=c.querySelector('[data-s]');
+  function pad(n){return (n<10?'0':'')+n}
+  function tick(){
+    var ms=Math.max(0,target-Date.now()), s=Math.floor(ms/1000);
+    D.textContent=pad(Math.floor(s/86400)); H.textContent=pad(Math.floor(s%86400/3600)); M.textContent=pad(Math.floor(s%3600/60)); S.textContent=pad(s%60);
+  }
+  tick(); setInterval(tick,1000);
+
+  // Registration. Set ENDPOINT to a CRM / webhook URL to post {name,email,phone,event} as JSON.
+  var ENDPOINT='';
+  var form=document.getElementById('reg'), card=document.getElementById('formcard');
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return}
+    var data={name:form.name.value.trim(),email:form.email.value.trim(),phone:form.phone.value.trim(),event:target.toISOString()};
+    var btn=form.querySelector('button'); btn.disabled=true; btn.textContent='Saving your seat…';
+    var send=ENDPOINT?fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){}):Promise.resolve();
+    send.then(function(){
+      document.getElementById('doneEmail').textContent=data.email;
+      card.classList.add('sent'); card.scrollIntoView({block:'center',behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
